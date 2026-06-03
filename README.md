@@ -22,9 +22,12 @@
     - fabric mod desc
     - fabric modid/authors/license/etc ✔
     - mod icon
+    - debug prints toggle
 - Utils
-    - chat notif util
+    - chat notif util ✔
     - title util (?)
+    - command register util ✔
+    - rainbow text util ✔ 
 - Individual Events
     - raid room complete ✔
     - player died

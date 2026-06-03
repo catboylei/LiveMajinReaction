@@ -13,5 +13,7 @@ public class LiveMajinReactionClient implements ClientModInitializer {
 
 		// reduces majinpoints by provided rate every second
 		PointDecay.init();
+
+		Utils.registerCommand("test", ctx -> Utils.notifyChat("hai :3"));
 	}
 }
