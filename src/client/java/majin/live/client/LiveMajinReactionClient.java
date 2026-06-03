@@ -1,7 +1,9 @@
 package majin.live.client;
 
 import majin.live.client.PointSystem.PointDecay;
+import majin.live.client.PointSystem.PointEvents;
 import majin.live.client.config.LiveMajinReactionConfigGenerated;
+import majin.live.client.events.RaidChallengeCompleted;
 import net.fabricmc.api.ClientModInitializer;
 
 public class LiveMajinReactionClient implements ClientModInitializer {
@@ -14,6 +16,11 @@ public class LiveMajinReactionClient implements ClientModInitializer {
 		// reduces majinpoints by provided rate every second
 		PointDecay.init();
 
-		Utils.registerCommand("test", ctx -> Utils.notifyChat("hai :3"));
+		// register all point events
+		PointEvents.init();
+
+		Utils.registerCommand("test", ctx -> {
+			RaidChallengeCompleted.EVENT.invoker().onChatMessage();
+		});
 	}
 }
