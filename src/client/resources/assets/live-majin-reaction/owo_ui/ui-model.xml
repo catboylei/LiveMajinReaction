@@ -1,0 +1,47 @@
+<owo-ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/wisp-forest/owo-lib/1.20/owo-ui.xsd">
+    <components>
+        <flow-layout direction="vertical" id="root">
+            <children>
+                <flow-layout direction="vertical" id="window">
+                    <children>
+                        <flow-layout direction="vertical" id="category-tab">
+                            <children></children>
+
+                            <sizing>
+                                <vertical method="fill">10</vertical>
+                                <horizontal method="fill">100</horizontal>
+                            </sizing>
+                        </flow-layout>
+
+                        <flow-layout direction="vertical" id="content-tab">
+                            <children></children>
+
+                            <sizing>
+                                <vertical method="fill">90</vertical>
+                                <horizontal method="fill">100</horizontal>
+                            </sizing>
+                        </flow-layout>
+                    </children>
+
+                    <gap>8</gap>
+                    <padding>
+                        <all>8</all>
+                    </padding>
+                    <surface>
+                        <panel dark="true"/>
+                    </surface>
+                    <sizing>
+                        <!-- roughly 2x and 1.1x the sizes of the survival inventory -->
+                        <horizontal method="fixed">334</horizontal> 
+                        <vertical method="fixed">195</vertical>
+                    </sizing>
+                </flow-layout>
+            </children>
+
+            <allow-overflow>true</allow-overflow>
+            <horizontal-alignment>center</horizontal-alignment>
+            <vertical-alignment>center</vertical-alignment>
+        </flow-layout>
+    </components>
+</owo-ui>

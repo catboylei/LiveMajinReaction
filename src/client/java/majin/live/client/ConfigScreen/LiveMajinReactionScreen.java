@@ -2,6 +2,7 @@ package majin.live.client.ConfigScreen;
 
 import io.wispforest.owo.ui.base.BaseUIModelScreen;
 import io.wispforest.owo.ui.container.FlowLayout;
+import io.wispforest.owo.ui.util.NinePatchTexture;
 import net.minecraft.util.Identifier;
 
 public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
@@ -12,7 +13,9 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
 
     @Override
     protected void build(FlowLayout rootComponent) {
-        // TODO
+        rootComponent.childById(FlowLayout.class, "window").surface((ctx, component) ->
+                NinePatchTexture.draw(LiveMajinReactionTextures.windowTexture, ctx, component)
+        );
     }
 }
 

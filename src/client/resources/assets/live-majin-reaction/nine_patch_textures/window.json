@@ -1,0 +1,14 @@
+{
+  "texture": "live-majin-reaction:textures/window.png",
+  "texture_width": 100,
+  "texture_height": 100,
+  "repeat": false,
+  "corner_patch_size": {
+    "width": 49,
+    "height": 49
+  },
+  "center_patch_size": {
+    "width": 1,
+    "height": 1
+  }
+}
