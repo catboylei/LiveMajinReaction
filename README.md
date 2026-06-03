@@ -4,7 +4,7 @@
 
 - Point System
     - point decay ✔
-    - events to points 
+    - events to points ✔
 - Config
     - config file ✔
     - config screen
