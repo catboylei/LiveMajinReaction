@@ -1,5 +1,6 @@
 package majin.live.client.events;
 
+import majin.live.client.Utils;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 
@@ -11,6 +12,7 @@ public interface RaidChallengeCompleted {
     Event<RaidChallengeCompleted> EVENT = EventFactory.createArrayBacked(
         RaidChallengeCompleted.class,
         listeners -> () -> {
+            Utils.debugPrint("Invoked event: RaidChallengeCompleted");
             for (RaidChallengeCompleted listener : listeners) {listener.onChatMessage();}
         }
     );

@@ -49,4 +49,9 @@ public class Utils {
         }
         return result;
     }
+
+    // this is here just for readability tbh
+    public static void debugPrint(String msg) {
+        if (LiveMajinReactionClient.CONFIG.internalSettings.debugPrints()) notifyChat(msg);
+    }
 }

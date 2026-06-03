@@ -1,12 +1,15 @@
 package majin.live.client.PointSystem;
 
 import majin.live.client.LiveMajinReactionClient;
+import majin.live.client.Utils;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 public class PointDecay {
     private static long lastDecayTick = 0;
 
     public static void init() {
+        Utils.debugPrint("Initiating pointDecay");
+
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null) return;
             long now = System.currentTimeMillis();
@@ -24,6 +27,8 @@ public class PointDecay {
         int current = LiveMajinReactionClient.CONFIG.internalSettings.majinPoints();
         if (current == 0) return;
         int rate = LiveMajinReactionClient.CONFIG.internalSettings.pointDecay();
+
+        Utils.debugPrint("Decayed points by " + rate + ", was " + current);
 
         if (current > 0) {
             LiveMajinReactionClient.CONFIG.internalSettings.majinPoints(Math.max(0, current - rate));
