@@ -23,12 +23,11 @@ public class Utils {
     }
 
     public static void registerCommand(String cmd, Consumer<CommandContext<FabricClientCommandSource>> action) {
-        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            dispatcher.register(ClientCommandManager.literal(cmd).executes(ctx -> {
-                action.accept(ctx);
-                return 1;
-            }));
-        });
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+                dispatcher.register(ClientCommandManager.literal(cmd).executes(ctx -> {
+                    action.accept(ctx);
+                    return 1;
+                })));
     }
 
     // majin likes rainbow text so this might be useful idk
@@ -50,7 +49,6 @@ public class Utils {
         return result;
     }
 
-    // this is here just for readability tbh
     public static void debugPrint(String msg) {
         if (LiveMajinReactionClient.CONFIG.internalSettings.debugPrints()) notifyChat(msg);
     }
