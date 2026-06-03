@@ -1,9 +1,37 @@
 # Live Majin Reaction
 
-## Setup
+## TODO:
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
-
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+- Point System
+    - point decay ✔
+    - events to points 
+- Config
+    - config file ✔
+    - config screen
+- Events
+    - base event structure ✔
+    - system chat event mixin ✔
+    - title event mixin
+    - sound event mixin (?)
+    - player chat event mixin (?)
+- UI
+    - majin
+    - majin
+    - majin
+- Other slop
+    - fabric mod desc
+    - fabric modid/authors/license/etc ✔
+    - mod icon
+- Utils
+    - chat notif util
+    - title util (?)
+- Individual Events
+    - raid room complete ✔
+    - player died
+    - raid complete
+    - war won
+    - war lost
+    - terr lost
+    - lootrun challenge completed
+    - lootrun mission/trial complete
+    - mythic drop
