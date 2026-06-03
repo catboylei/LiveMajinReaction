@@ -1,0 +1,13 @@
+{
+  "text.config.live-majin-reaction.title": "Live Majin Reaction",
+
+  "text.config.live-majin-reaction.section.General": "General Settings",
+  "text.config.live-majin-reaction.section.Other": "Other Settings",
+  "text.config.live-majin-reaction.category.internalSettings": "Internal Settings",
+
+  "text.config.live-majin-reaction.option.reactionEnabled": "Enable Reactions",
+
+  "text.config.live-majin-reaction.option.internalSettings.pointDecay": "Point Decay",
+  "text.config.live-majin-reaction.option.internalSettings.majinPoints": "Majin Points",
+  "text.config.live-majin-reaction.option.internalSettings.debugPrints": "Debug Prints"
+}
