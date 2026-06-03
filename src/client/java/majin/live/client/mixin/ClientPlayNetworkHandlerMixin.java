@@ -16,10 +16,12 @@ public class ClientPlayNetworkHandlerMixin {
     private void onGameMessage(GameMessageS2CPacket packet, CallbackInfo ci) {
         String content = packet.content().getString();
 
-        // call chat events
+        // call chat events down here
+
+        // this is honestly really bad pls find a better match for it
+        // genuinely its the only consistent way to detect challenge end, i guess u could make it into a stricter regex tho
         if (content.contains("Challenge Completed")) {
             RaidChallengeCompleted.EVENT.invoker().onChatMessage();
         }
     }
-
 }

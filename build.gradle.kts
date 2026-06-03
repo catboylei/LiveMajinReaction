@@ -13,6 +13,8 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven("https://maven.terraformersmc.com/releases")
+	maven("https://maven.wispforest.io")
+	maven("https://jitpack.io")
 }
 
 loom {
@@ -40,7 +42,11 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${providers.gradleProperty("fabric_api_version").get()}")
+
+	// mod menu and owolib for config and stuff
 	modImplementation("com.terraformersmc:modmenu:${project.property("modmenu_version")}")
+	modImplementation("io.wispforest:owo-lib:${project.property("owo_version")}")
+	annotationProcessor("io.wispforest:owo-lib:${project.property("owo_version")}")
 }
 
 tasks.processResources {
