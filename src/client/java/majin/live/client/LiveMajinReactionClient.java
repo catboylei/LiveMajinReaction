@@ -19,8 +19,7 @@ public class LiveMajinReactionClient implements ClientModInitializer {
 		// register point add event
 		PointEvents.init();
 
-		Utils.registerCommand("test", ctx -> {
-			ShouldAddPoints.EVENT.invoker().invoke(20);
-		});
+		// comment this out to yk obviously yeah
+		DebugUtils.enable();
 	}
 }

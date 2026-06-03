@@ -33,7 +33,7 @@ public class PointDecay {
         if (current > 0) {
             LiveMajinReactionClient.CONFIG.internalSettings.majinPoints(Math.max(0, current - rate));
         } else {
-            LiveMajinReactionClient.CONFIG.internalSettings.majinPoints(Math.max(0, current + rate));
+            LiveMajinReactionClient.CONFIG.internalSettings.majinPoints(Math.min(0, current + rate));
         }
     }
 }
