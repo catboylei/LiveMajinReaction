@@ -1,5 +1,6 @@
 package majin.live.client;
 
+import majin.live.client.PointSystem.PointDecay;
 import majin.live.client.config.LiveMajinReactionConfigGenerated;
 import net.fabricmc.api.ClientModInitializer;
 
@@ -9,6 +10,8 @@ public class LiveMajinReactionClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
+
+		// reduces majinpoints by provided rate every second
+		PointDecay.init(1);
 	}
 }
