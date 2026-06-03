@@ -18,6 +18,9 @@
 		],
 		"fabric-datagen": [
 			"majin.live.client.LiveMajinReactionDataGenerator"
+		],
+		"modmenu": [
+			"majin.live.client.ConfigScreen.LiveMajinReactionModMenuApi"
 		]
 	},
 	"mixins": [
