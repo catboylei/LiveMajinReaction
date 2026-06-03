@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 public class PointDecay {
     private static long lastDecayTick = 0;
 
-    public static void init(int rate) {
+    public static void init() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null) return;
             long now = System.currentTimeMillis();
@@ -15,14 +15,15 @@ public class PointDecay {
             if (now - lastDecayTick >= 1000) {
                 lastDecayTick = now;
 
-                handleDecay(rate);
+                handleDecay();
             }
         });
     }
 
-    private static void handleDecay(int rate) {
+    private static void handleDecay() {
         int current = LiveMajinReactionClient.CONFIG.majinPoints();
         if (current == 0) return;
+        int rate = LiveMajinReactionClient.CONFIG.pointDecay();
 
         if (current > 0) {
             LiveMajinReactionClient.CONFIG.majinPoints(Math.max(0, current - rate));

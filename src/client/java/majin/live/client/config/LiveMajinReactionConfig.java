@@ -8,5 +8,6 @@ import io.wispforest.owo.config.annotation.Modmenu;
 public class LiveMajinReactionConfig {
 
     // add fields to the config here, datagen handles them automatically
+    public int pointDecay = 1;
     public int majinPoints = 0;
 }

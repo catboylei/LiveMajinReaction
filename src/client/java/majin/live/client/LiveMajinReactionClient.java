@@ -12,6 +12,6 @@ public class LiveMajinReactionClient implements ClientModInitializer {
 	public void onInitializeClient() {
 
 		// reduces majinpoints by provided rate every second
-		PointDecay.init(1);
+		PointDecay.init();
 	}
 }
