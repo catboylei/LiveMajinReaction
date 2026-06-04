@@ -6,20 +6,67 @@
                 <flow-layout direction="vertical" id="window">
                     <children>
                         <flow-layout direction="horizontal" id="category-tab">
-                            <children></children>
+                            <children>
+                                <flow-layout direction="horizontal" id="category-tab-left">
+                                    <children>
+                                        <button id="options-button">
+                                            <sizing>
+                                                <vertical method="fill">100</vertical>
+                                                <horizontal method="fill">30</horizontal>
+                                            </sizing>
+                                            <text>Options</text>
+                                        </button>
+
+                                        <button id="other-button">
+                                            <sizing>
+                                                <vertical method="fill">100</vertical>
+                                                <horizontal method="fill">30</horizontal>
+                                            </sizing>
+                                            <text>Other</text>
+                                        </button>
+
+                                    </children>
+
+                                    <sizing>
+                                        <vertical method="fill">100</vertical>
+                                        <horizontal method="fill">50</horizontal>
+                                    </sizing>
+                                    <horizontal-alignment>left</horizontal-alignment>
+                                    <gap>6</gap>
+                                </flow-layout>
+
+                                <flow-layout direction="horizontal" id="category-tab-right">
+                                    <children>
+                                        <button id="info-button">
+                                            <sizing>
+                                                <vertical method="fixed">13</vertical>
+                                                <horizontal method="fixed">13</horizontal>
+                                            </sizing>
+                                        </button>
+                                    </children>
+
+                                    <sizing>
+                                        <vertical method="fill">100</vertical>
+                                        <horizontal method="fill">50</horizontal>
+                                    </sizing>
+                                    <horizontal-alignment>right</horizontal-alignment>
+                                    <vertical-alignment>center</vertical-alignment>
+                                    <gap>6</gap>
+                                    <allow-overflow>true</allow-overflow>
+                                </flow-layout>
+                            </children>
 
                             <sizing>
                                 <vertical method="fill">15</vertical>
                                 <horizontal method="fill">100</horizontal>
                             </sizing>
-                            <gap>8</gap>
                             <padding>
-                                <left>8</left>
-                                <top>8</top>
-                                <right>8</right>
+                                <horizontal>12</horizontal>
+                                <vertical>6</vertical>
                             </padding>
-                            <horizontal-alignment>left</horizontal-alignment>
+                            <horizontal-alignment>center</horizontal-alignment>
                             <vertical-alignment>center</vertical-alignment>
+                            <allow-overflow>true</allow-overflow>
                         </flow-layout>
 
                         <flow-layout direction="horizontal" id="separator">
@@ -47,19 +94,22 @@
 
                     <padding>
                         <all>8</all>
-                        <right>7</right>
                     </padding>
                     <sizing>
                         <!-- roughly 2x and 1.1x the sizes of the survival inventory -->
                         <horizontal method="fixed">334</horizontal>
                         <vertical method="fixed">195</vertical>
                     </sizing>
+                    <allow-overflow>true</allow-overflow>
                 </flow-layout>
             </children>
 
             <allow-overflow>true</allow-overflow>
             <horizontal-alignment>center</horizontal-alignment>
             <vertical-alignment>center</vertical-alignment>
+            <margins>
+                <right>1</right>
+            </margins>
         </flow-layout>
     </components>
 </owo-ui>

@@ -7,4 +7,6 @@ public class LiveMajinReactionTextures {
     static Identifier activeButton = Identifier.of("live-majin-reaction", "active-button");
     static Identifier inactiveButton = Identifier.of("live-majin-reaction", "inactive-button");
     static Identifier separator = Identifier.of("live-majin-reaction", "separator");
+    static Identifier activeInfo = Identifier.of("live-majin-reaction", "active-info");
+    static Identifier inactiveInfo = Identifier.of("live-majin-reaction", "inactive-info");
 }
