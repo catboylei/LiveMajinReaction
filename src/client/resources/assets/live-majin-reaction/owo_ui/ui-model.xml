@@ -88,9 +88,13 @@
                                     <children></children>
 
                                     <sizing>
-                                        <horizontal method="fixed">194</horizontal>
+                                        <horizontal method="fixed">186</horizontal>
                                         <vertical method="fill">100</vertical>
                                     </sizing>
+                                    <gap>6</gap>
+                                    <padding>
+                                        <top>1</top>
+                                    </padding>
                                 </flow-layout>
 
                                 <flow-layout direction="vertical" id="majin">
@@ -113,6 +117,7 @@
                             </padding>
                             <horizontal-alignment>right</horizontal-alignment>
                             <vertical-alignment>center</vertical-alignment>
+                            <gap>8</gap>
                         </flow-layout>
                     </children>
 
@@ -136,4 +141,76 @@
             </margins>
         </flow-layout>
     </components>
+
+    <templates>
+        <template name="setting-entry">
+            <flow-layout direction="horizontal">
+                <children>
+                    <flow-layout direction="horizontal">
+                        <children>
+                            <flow-layout direction="vertical">
+                                <children>
+                                    <label>
+                                        <text>{{name}}</text>
+                                    </label>
+                                    <label>
+                                        <text>{{desc}}</text>
+                                        <color>#a87ca8</color>
+                                    </label>
+                                </children>
+
+                                <sizing>
+                                    <horizontal method="fill">100</horizontal>
+                                    <vertical method="fill">100</vertical>
+                                </sizing>
+                                <horizontal-alignment>left</horizontal-alignment>
+                                <vertical-alignment>center</vertical-alignment>
+                                <gap>4</gap>
+                            </flow-layout>
+                        </children>
+
+                        <padding>
+                            <left>4</left>
+                        </padding>
+                        <sizing>
+                            <horizontal method="fill">75</horizontal>
+                            <vertical method="fill">100</vertical>
+                        </sizing>
+                        <horizontal-alignment>left</horizontal-alignment>
+                        <vertical-alignment>center</vertical-alignment>
+                    </flow-layout>
+                    <flow-layout direction="horizontal">
+                        <children>
+                            <button id="{{configId}}">
+                                <text/>
+                                <sizing>
+                                    <horizontal method="fill">50</horizontal>
+                                    <vertical method="fill">50</vertical>
+                                </sizing>
+                            </button>
+                        </children>
+
+                        <padding>
+                            <right>4</right>
+                        </padding>
+                        <sizing>
+                            <horizontal method="fill">25</horizontal>
+                            <vertical method="fill">100</vertical>
+                        </sizing>
+                        <horizontal-alignment>right</horizontal-alignment>
+                        <vertical-alignment>center</vertical-alignment>
+                        <allow-overflow>true</allow-overflow>
+                    </flow-layout>
+                </children>
+
+                <horizontal-alignment>left</horizontal-alignment>
+                <vertical-alignment>center</vertical-alignment>
+                <sizing>
+                    <horizontal method="fill">100</horizontal>
+                    <vertical method="fill">25</vertical>
+                </sizing>
+                <allow-overflow>true</allow-overflow>
+            </flow-layout>
+        </template>
+    </templates>
 </owo-ui>

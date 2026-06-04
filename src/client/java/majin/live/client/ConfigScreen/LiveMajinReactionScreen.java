@@ -2,10 +2,18 @@ package majin.live.client.ConfigScreen;
 
 import io.wispforest.owo.ui.base.BaseUIModelScreen;
 import io.wispforest.owo.ui.component.ButtonComponent;
+import io.wispforest.owo.ui.component.UIComponents;
 import io.wispforest.owo.ui.container.FlowLayout;
+import io.wispforest.owo.ui.container.ScrollContainer;
+import io.wispforest.owo.ui.container.UIContainers;
+import io.wispforest.owo.ui.core.Sizing;
 import io.wispforest.owo.ui.util.NinePatchTexture;
 import majin.live.client.LiveMajinReactionClient;
+import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+
+import java.util.Map;
 
 public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
 
@@ -17,6 +25,7 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
     protected void build(FlowLayout rootComponent) {
         applyCustomTextures(rootComponent);
         bindCategoryButtons(rootComponent);
+        rebuildSettingsContainer(rootComponent);
     }
 
     private void applyCustomTextures(FlowLayout rootComponent) {
@@ -41,15 +50,31 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
     }
 
     private void bindCategoryButtons(FlowLayout rootComponent) {
-        rootComponent.childById(ButtonComponent.class, "options-button").onPress(button ->
-                LiveMajinReactionClient.CONFIG.internalSettings.openCategory(button.id())
-        );
-        rootComponent.childById(ButtonComponent.class, "other-button").onPress(button ->
-                LiveMajinReactionClient.CONFIG.internalSettings.openCategory(button.id())
-        );
-        rootComponent.childById(ButtonComponent.class, "info-button").onPress(button ->
-                LiveMajinReactionClient.CONFIG.internalSettings.openCategory(button.id())
-        );
+        rootComponent.childById(ButtonComponent.class, "options-button").onPress(button -> {
+            LiveMajinReactionClient.CONFIG.internalSettings.openCategory(button.id());
+            rebuildSettingsContainer(rootComponent);
+        });
+        rootComponent.childById(ButtonComponent.class, "other-button").onPress(button -> {
+            LiveMajinReactionClient.CONFIG.internalSettings.openCategory(button.id());
+            rebuildSettingsContainer(rootComponent);
+        });
+        rootComponent.childById(ButtonComponent.class, "info-button").onPress(button -> {
+            LiveMajinReactionClient.CONFIG.internalSettings.openCategory(button.id());
+            rebuildSettingsContainer(rootComponent);
+        });
+    }
+
+    private void rebuildSettingsContainer(FlowLayout rootComponent) {
+        FlowLayout container = rootComponent.childById(FlowLayout.class, "settings-container");
+        container.clearChildren();
+
+        if (LiveMajinReactionClient.CONFIG.internalSettings.openCategory().equals("options-button")) {
+            container.child(scrollable());
+
+            for (SettingEntry entry : LiveMajinReactionSettingEntries.entries) {
+                rootComponent.childById(FlowLayout.class,"putsettingsherethanks").child(makeSettingEntry(entry));
+            }
+        }
     }
 
     private Identifier getButtonTexture(ButtonComponent button) {
@@ -60,5 +85,24 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
     private Identifier getInfoButtonTexture(ButtonComponent button) {
         boolean enabled = LiveMajinReactionClient.CONFIG.internalSettings.openCategory().equals(button.id());
         return (enabled) ? LiveMajinReactionTextures.activeInfo : LiveMajinReactionTextures.inactiveInfo;
+    }
+
+    private FlowLayout makeSettingEntry(SettingEntry entry) {
+        return (FlowLayout) this.model.expandTemplate(
+                FlowLayout.class,
+                "setting-entry@live-majin-reaction:ui-model",
+                Map.of("name", entry.title(), "configId", entry.configId(), "desc", entry.desc())
+        ).surface((ctx, component) ->
+                NinePatchTexture.draw(LiveMajinReactionTextures.activeButton, ctx, component)
+        );
+    }
+
+    private ScrollContainer<FlowLayout> scrollable() {
+        FlowLayout container = UIContainers.verticalFlow(Sizing.content(), Sizing.content());
+        container.id("putsettingsherethanks");
+        container.gap(6);
+
+        return UIContainers.verticalScroll(Sizing.content(), Sizing.fill(100), container)
+                .scrollbarThiccness(0);
     }
 }
