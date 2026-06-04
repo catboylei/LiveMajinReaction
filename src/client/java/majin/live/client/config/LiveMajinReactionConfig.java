@@ -21,5 +21,6 @@ public class LiveMajinReactionConfig {
         public int pointDecay = 1;
         public int majinPoints = 0;
         public boolean debugPrints = false;
+        public String openCategory = "options-button";
     }
 }
