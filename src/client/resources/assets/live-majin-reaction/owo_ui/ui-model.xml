@@ -5,35 +5,53 @@
             <children>
                 <flow-layout direction="vertical" id="window">
                     <children>
-                        <flow-layout direction="vertical" id="category-tab">
+                        <flow-layout direction="horizontal" id="category-tab">
                             <children></children>
 
                             <sizing>
-                                <vertical method="fill">10</vertical>
+                                <vertical method="fill">15</vertical>
                                 <horizontal method="fill">100</horizontal>
                             </sizing>
+                            <gap>8</gap>
+                            <padding>
+                                <left>8</left>
+                                <top>8</top>
+                                <right>8</right>
+                            </padding>
+                            <horizontal-alignment>left</horizontal-alignment>
+                            <vertical-alignment>center</vertical-alignment>
+                        </flow-layout>
+
+                        <flow-layout direction="horizontal" id="separator">
+
+                            <children/>
+                            <sizing>
+                                <vertical method="fixed">9</vertical>
+                                <horizontal method="fill">100</horizontal>
+                            </sizing>
+
+                            <surface>
+                                <vanilla-translucent/>
+                            </surface>
                         </flow-layout>
 
                         <flow-layout direction="vertical" id="content-tab">
                             <children></children>
 
                             <sizing>
-                                <vertical method="fill">90</vertical>
+                                <vertical method="fill">80</vertical>
                                 <horizontal method="fill">100</horizontal>
                             </sizing>
                         </flow-layout>
                     </children>
 
-                    <gap>8</gap>
                     <padding>
                         <all>8</all>
+                        <right>7</right>
                     </padding>
-                    <surface>
-                        <panel dark="true"/>
-                    </surface>
                     <sizing>
                         <!-- roughly 2x and 1.1x the sizes of the survival inventory -->
-                        <horizontal method="fixed">334</horizontal> 
+                        <horizontal method="fixed">334</horizontal>
                         <vertical method="fixed">195</vertical>
                     </sizing>
                 </flow-layout>

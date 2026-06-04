@@ -1,0 +1,14 @@
+{
+  "texture": "live-majin-reaction:textures/separator.png",
+  "texture_width": 9,
+  "texture_height": 9,
+  "repeat": false,
+  "corner_patch_size": {
+    "width": 4,
+    "height": 4
+  },
+  "center_patch_size": {
+    "width": 1,
+    "height": 1
+  }
+}

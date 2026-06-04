@@ -1,0 +1,15 @@
+{
+  "texture": "live-majin-reaction:textures/buttons.png",
+  "texture_width": 19,
+  "texture_height": 36,
+  "repeat": false,
+  "v": 18,
+  "corner_patch_size": {
+    "width": 9,
+    "height": 8
+  },
+  "center_patch_size": {
+    "width": 1,
+    "height": 2
+  }
+}

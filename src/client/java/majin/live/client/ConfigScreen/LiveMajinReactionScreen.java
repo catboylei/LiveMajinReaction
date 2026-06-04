@@ -14,7 +14,10 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
     @Override
     protected void build(FlowLayout rootComponent) {
         rootComponent.childById(FlowLayout.class, "window").surface((ctx, component) ->
-                NinePatchTexture.draw(LiveMajinReactionTextures.windowTexture, ctx, component)
+                NinePatchTexture.draw(LiveMajinReactionTextures.window, ctx, component)
+        );
+        rootComponent.childById(FlowLayout.class, "separator").surface((ctx, component) ->
+                NinePatchTexture.draw(LiveMajinReactionTextures.separator, ctx, component)
         );
     }
 }
