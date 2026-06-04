@@ -82,13 +82,37 @@
                             </surface>
                         </flow-layout>
 
-                        <flow-layout direction="vertical" id="content-tab">
-                            <children></children>
+                        <flow-layout direction="horizontal" id="content-tab">
+                            <children>
+                                <flow-layout direction="vertical" id="settings-container">
+                                    <children></children>
+
+                                    <sizing>
+                                        <horizontal method="fixed">194</horizontal>
+                                        <vertical method="fill">100</vertical>
+                                    </sizing>
+                                </flow-layout>
+
+                                <flow-layout direction="vertical" id="majin">
+                                    <children></children>
+
+                                    <sizing>
+                                        <horizontal method="fixed">100</horizontal>
+                                        <vertical method="fixed">128</vertical>
+                                    </sizing>
+                                </flow-layout>
+                            </children>
 
                             <sizing>
                                 <vertical method="fill">80</vertical>
                                 <horizontal method="fill">100</horizontal>
                             </sizing>
+                            <padding>
+                                <horizontal>12</horizontal>
+                                <vertical>6</vertical>
+                            </padding>
+                            <horizontal-alignment>right</horizontal-alignment>
+                            <vertical-alignment>center</vertical-alignment>
                         </flow-layout>
                     </children>
 

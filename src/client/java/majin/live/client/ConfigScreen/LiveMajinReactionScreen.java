@@ -35,6 +35,9 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
         rootComponent.childById(ButtonComponent.class, "info-button").renderer((matrices, button, meow) ->
                 NinePatchTexture.draw(getInfoButtonTexture(button), matrices, button.x(), button.y(), button.width(), button.height())
         );
+        rootComponent.childById(FlowLayout.class, "majin").surface((ctx, component) ->
+                NinePatchTexture.draw(LiveMajinReactionTextures.majinNeutral, ctx, component)
+        );
     }
 
     private void bindCategoryButtons(FlowLayout rootComponent) {
