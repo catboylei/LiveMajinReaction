@@ -6,13 +6,18 @@ import io.wispforest.owo.ui.component.UIComponents;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.container.ScrollContainer;
 import io.wispforest.owo.ui.container.UIContainers;
+import io.wispforest.owo.ui.core.ParentUIComponent;
 import io.wispforest.owo.ui.core.Sizing;
 import io.wispforest.owo.ui.util.NinePatchTexture;
 import majin.live.client.LiveMajinReactionClient;
+import majin.live.client.Utils;
+import majin.live.client.config.LiveMajinReactionConfigGenerated;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
@@ -88,13 +93,34 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
     }
 
     private FlowLayout makeSettingEntry(SettingEntry entry) {
-        return (FlowLayout) this.model.expandTemplate(
+        ParentUIComponent entryContainer = this.model.expandTemplate(
                 FlowLayout.class,
                 "setting-entry@live-majin-reaction:ui-model",
                 Map.of("name", entry.title(), "configId", entry.configId(), "desc", entry.desc())
         ).surface((ctx, component) ->
                 NinePatchTexture.draw(LiveMajinReactionTextures.activeButton, ctx, component)
         );
+
+        ButtonComponent configButton = entryContainer.childById(ButtonComponent.class, entry.configId());
+
+        // hook the setting entry button to its configId
+        try {
+            Method getter = LiveMajinReactionClient.CONFIG.getClass().getMethod(entry.configId());
+            Method setter = LiveMajinReactionClient.CONFIG.getClass().getMethod(entry.configId(), boolean.class);
+
+            configButton.renderer((matrices, button, meow) ->
+                    NinePatchTexture.draw((getSwitchValue(getter)) ? LiveMajinReactionTextures.activeSwitch : LiveMajinReactionTextures.inactiveSwitch, matrices, button.x(), button.y(), button.width(), button.height())
+            );
+            configButton.onPress(button -> {
+                boolean value = !getSwitchValue(getter);
+                setSwitchValue(setter, value);
+                Utils.debugPrint("set switch " + entry.configId() + " to " + value);
+            });
+        } catch(Exception e) {
+            Utils.debugPrint("config id: " + entry.configId() + " returned " + e);
+        }
+
+        return (FlowLayout) entryContainer;
     }
 
     private ScrollContainer<FlowLayout> scrollable() {
@@ -104,5 +130,22 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
 
         return UIContainers.verticalScroll(Sizing.content(), Sizing.fill(100), container)
                 .scrollbarThiccness(0);
+    }
+
+    private boolean getSwitchValue(Method getter) {
+        try {
+            return ((boolean) (getter.invoke(LiveMajinReactionClient.CONFIG)));
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            Utils.debugPrint("failed to get switch value");
+        }
+        return false;
+    }
+
+    private void setSwitchValue(Method setter, boolean value) {
+        try {
+            setter.invoke(LiveMajinReactionClient.CONFIG, value);
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            Utils.debugPrint("failed to get switch value");
+        }
     }
 }

@@ -50,7 +50,7 @@ public class Utils {
     }
 
     public static void debugPrint(String msg) {
-        if (LiveMajinReactionClient.CONFIG.internalSettings.debugPrints()) notifyChat(msg);
+        if (LiveMajinReactionClient.CONFIG.debugPrints()) notifyChat(msg);
     }
 
     public static void addPoints(int points) {

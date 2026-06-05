@@ -12,6 +12,8 @@ public class LiveMajinReactionConfig {
 
     @SectionHeader("General")
     public boolean reactionEnabled = true;
+    public boolean exampleBool = false;
+    public boolean debugPrints = false;
 
     @SectionHeader("Other")
     @Nest
@@ -20,7 +22,6 @@ public class LiveMajinReactionConfig {
     public static class Internal {
         public int pointDecay = 1;
         public int majinPoints = 0;
-        public boolean debugPrints = false;
         public String openCategory = "options-button";
     }
 }
