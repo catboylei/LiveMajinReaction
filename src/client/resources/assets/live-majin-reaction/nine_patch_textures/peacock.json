@@ -1,0 +1,14 @@
+{
+  "texture": "live-majin-reaction:textures/peacock.png",
+  "texture_width": 230,
+  "texture_height": 190,
+  "repeat": false,
+  "corner_patch_size": {
+    "width": 114,
+    "height": 94
+  },
+  "center_patch_size": {
+    "width": 2,
+    "height": 2
+  }
+}

@@ -2,7 +2,6 @@ package majin.live.client.ConfigScreen;
 
 import io.wispforest.owo.ui.base.BaseUIModelScreen;
 import io.wispforest.owo.ui.component.ButtonComponent;
-import io.wispforest.owo.ui.component.UIComponents;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.container.ScrollContainer;
 import io.wispforest.owo.ui.container.UIContainers;
@@ -11,9 +10,6 @@ import io.wispforest.owo.ui.core.Sizing;
 import io.wispforest.owo.ui.util.NinePatchTexture;
 import majin.live.client.LiveMajinReactionClient;
 import majin.live.client.Utils;
-import majin.live.client.config.LiveMajinReactionConfigGenerated;
-import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import java.lang.reflect.InvocationTargetException;
