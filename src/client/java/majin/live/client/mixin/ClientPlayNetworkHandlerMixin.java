@@ -1,6 +1,7 @@
 package majin.live.client.mixin;
 
 import majin.live.client.PointSystem.PointEvents;
+import majin.live.client.Utils;
 import majin.live.client.events.ShouldAddPoints;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,7 +23,7 @@ public class ClientPlayNetworkHandlerMixin {
         // this is honestly really bad pls find a better match for it
         // genuinely its the only consistent way to detect challenge end, i guess u could make it into a stricter regex tho
         if (content.contains("Challenge Completed")) {
-            ShouldAddPoints.EVENT.invoker().invoke(PointEvents.PointValues.get("RaidRoomComplete"));
+            ShouldAddPoints.EVENT.invoker().invoke(PointEvents.PointValues.get("RaidChallengeComplete"));
         }
     }
 }

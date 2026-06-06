@@ -6,6 +6,7 @@ import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.container.ScrollContainer;
 import io.wispforest.owo.ui.container.UIContainers;
 import io.wispforest.owo.ui.core.ParentUIComponent;
+import io.wispforest.owo.ui.core.Positioning;
 import io.wispforest.owo.ui.core.Sizing;
 import io.wispforest.owo.ui.util.NinePatchTexture;
 import majin.live.client.LiveMajinReactionClient;
@@ -27,6 +28,14 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
         applyCustomTextures(rootComponent);
         bindCategoryButtons(rootComponent);
         rebuildSettingsContainer(rootComponent);
+    }
+
+    // this is called after build, once all the sizes are calculated
+    @Override
+    protected void init() {
+        super.init();
+
+        initPeacockDecoration(this.uiAdapter.rootComponent);
     }
 
     private void applyCustomTextures(FlowLayout rootComponent) {
@@ -143,5 +152,20 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
         } catch (InvocationTargetException | IllegalAccessException e) {
             Utils.debugPrint("failed to get switch value");
         }
+    }
+
+    private void initPeacockDecoration(FlowLayout root) {
+        FlowLayout window = root.childById(FlowLayout.class, "window");
+        FlowLayout peacock = UIContainers.verticalFlow(Sizing.fixed(230), Sizing.fixed(190));
+
+        root.removeChild(root.childById(FlowLayout.class, "peacock"));
+
+        peacock.surface((ctx, component) ->
+                NinePatchTexture.draw(LiveMajinReactionTextures.peacock, ctx, component)
+        );
+        peacock.positioning(Positioning.absolute(window.x() + 52, window.y() - 187)).id("peacock");
+
+        Utils.debugPrint("rendering peacock at " + window.x() + " " + window.y());
+        root.child(peacock);
     }
 }
