@@ -213,5 +213,28 @@
                 <allow-overflow>true</allow-overflow>
             </flow-layout>
         </template>
+
+        <!-- maybe dont use this -->
+        <template name="info-entry">
+            <flow-layout direction="horizontal">
+                <children>
+                    <label>
+                        <text>{{name}}</text>
+                    </label>
+                    <label>
+                        <text>{{desc}}</text>
+                        <color>#dcdcdc</color>
+                    </label>
+                </children>
+
+                <horizontal-alignment>left</horizontal-alignment>
+                <vertical-alignment>center</vertical-alignment>
+                <sizing>
+                    <horizontal method="fill">100</horizontal>
+                    <vertical method="content"/>
+                </sizing>
+                <allow-overflow>true</allow-overflow>
+            </flow-layout>
+        </template>
     </templates>
 </owo-ui>

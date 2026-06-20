@@ -2,15 +2,15 @@ package majin.live.client.ConfigScreen;
 
 import io.wispforest.owo.ui.base.BaseUIModelScreen;
 import io.wispforest.owo.ui.component.ButtonComponent;
+import io.wispforest.owo.ui.component.UIComponents;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.container.ScrollContainer;
 import io.wispforest.owo.ui.container.UIContainers;
-import io.wispforest.owo.ui.core.ParentUIComponent;
-import io.wispforest.owo.ui.core.Positioning;
-import io.wispforest.owo.ui.core.Sizing;
+import io.wispforest.owo.ui.core.*;
 import io.wispforest.owo.ui.util.NinePatchTexture;
 import majin.live.client.LiveMajinReactionClient;
 import majin.live.client.Utils;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import java.lang.reflect.InvocationTargetException;
@@ -35,7 +35,7 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
     protected void init() {
         super.init();
 
-        initPeacockDecoration(this.uiAdapter.rootComponent);
+        //initPeacockDecoration(this.uiAdapter.rootComponent);
     }
 
     private void applyCustomTextures(FlowLayout rootComponent) {
@@ -79,10 +79,17 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
         container.clearChildren();
 
         if (LiveMajinReactionClient.CONFIG.internalSettings.openCategory().equals("options-button")) {
-            container.child(scrollable());
+            container.child(scrollable()); // creates setting container
 
             for (SettingEntry entry : LiveMajinReactionSettingEntries.entries) {
-                rootComponent.childById(FlowLayout.class,"putsettingsherethanks").child(makeSettingEntry(entry));
+                rootComponent.childById(FlowLayout.class,"putsettingsherethanks").child(makeSettingEntry(entry)); // appends to container above
+            }
+        }
+        if (LiveMajinReactionClient.CONFIG.internalSettings.openCategory().equals("info-button")) {
+            container.child(scrollable());
+
+            for (SettingEntry entry : LiveMajinReactionSettingEntries.infoEntries) {
+                rootComponent.childById(FlowLayout.class,"putsettingsherethanks").child(makeInfoEntry(entry.title(), entry.desc()));
             }
         }
     }
@@ -167,5 +174,15 @@ public class LiveMajinReactionScreen extends BaseUIModelScreen<FlowLayout> {
 
         Utils.debugPrint("rendering peacock at " + window.x() + " " + window.y());
         root.child(peacock);
+    }
+
+    private FlowLayout makeInfoEntry(String title, String desc) {
+        FlowLayout entry =  UIContainers.verticalFlow(Sizing.fill(100), Sizing.content());
+        entry.child(UIComponents.label(Text.literal(title))).child(UIComponents.label(Text.literal(desc)).color(Color.ofArgb(0xFFBCBCBC))).gap(6);
+        entry.padding(Insets.of(6)).surface((ctx, component) ->
+                NinePatchTexture.draw(LiveMajinReactionTextures.activeButton, ctx, component)
+        );
+
+        return entry;
     }
 }

@@ -7,7 +7,7 @@
     - events to points ✔
 - Config
     - config file ✔
-    - config screen
+    - config screen (almost) ✔
 - Events
     - base event structure ✔
     - system chat event mixin ✔
@@ -15,7 +15,7 @@
     - sound event mixin (?)
     - player chat event mixin (?)
 - UI
-    - majin
+    - majin ✔
     - majin
     - majin
 - Other slop
